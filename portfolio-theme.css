@@ -1,0 +1,412 @@
+/* Shared with index + category subpages — keep in sync with homepage */
+
+:root {
+  --bg: #faf3e8;
+  --text: #1a1a1a;
+  --text-muted: #756554;
+  --nav-box-bg: #fffaf4;
+  --nav-box-border: #e8d9c8;
+  --thumb-border: #e0d0bc;
+  --footer-bg: #0a0a0a;
+  --footer-text: #fafafa;
+  --mono: "IBM Plex Mono", ui-monospace, monospace;
+  --sans: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+[data-theme="dark"] {
+  --bg: #1c1914;
+  --text: #f5f5f5;
+  --text-muted: #a89f92;
+  --nav-box-bg: #2a241c;
+  --nav-box-border: #3d362c;
+  --thumb-border: #3d362c;
+  --footer-bg: #000000;
+  --footer-text: #e5e5e5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: light;
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+a {
+  color: inherit;
+}
+
+.page {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 28px clamp(20px, 4vw, 40px) 80px;
+}
+
+/* —— Top nav —— */
+.top-bar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: clamp(32px, 6vw, 56px);
+}
+
+.nav-pill {
+  display: inline-block;
+  padding: 10px 18px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-decoration: none;
+  text-transform: lowercase;
+  background: var(--nav-box-bg);
+  border: 1px solid var(--nav-box-border);
+  border-radius: 2px;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.nav-pill:hover {
+  background: color-mix(in srgb, var(--nav-box-bg) 85%, var(--text));
+}
+
+.nav-pill[aria-current="page"] {
+  font-weight: 700;
+  border-color: color-mix(in srgb, var(--text) 22%, var(--nav-box-border));
+}
+
+.theme-dot {
+  width: 12px;
+  height: 12px;
+  padding: 0;
+  border-radius: 50%;
+  border: 1px solid var(--nav-box-border);
+  background: var(--bg);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.theme-dot[aria-pressed="true"] {
+  background: var(--text);
+}
+
+/* —— Homepage intro —— */
+.intro-block {
+  display: grid;
+  grid-template-columns: minmax(160px, 280px) 1fr;
+  gap: clamp(24px, 5vw, 48px);
+  align-items: start;
+  margin-bottom: clamp(28px, 5vw, 40px);
+}
+
+.name-brand {
+  font-size: clamp(2rem, 4.5vw, 3.25rem);
+  font-weight: 900;
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+  user-select: none;
+  text-transform: lowercase;
+}
+
+.hi {
+  font-size: clamp(2.5rem, 6vw, 3.75rem);
+  font-weight: 800;
+  margin: 0 0 16px;
+  letter-spacing: -0.03em;
+}
+
+.intro-lead {
+  font-family: var(--mono);
+  font-size: 0.9375rem;
+  font-weight: 400;
+  line-height: 1.65;
+  color: var(--text);
+  margin: 0;
+  max-width: 52ch;
+}
+
+.intro-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(20px, 4vw, 40px);
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+
+.intro-columns p {
+  margin: 0;
+}
+
+.rule-dotted {
+  border: none;
+  height: 0;
+  margin: clamp(36px, 6vw, 52px) 0 clamp(28px, 5vw, 40px);
+  border-top: 2px dotted color-mix(in srgb, var(--text) 28%, transparent);
+}
+
+.rule-dotted--sub {
+  margin: clamp(20px, 4vw, 32px) 0 clamp(24px, 4vw, 36px);
+}
+
+.categories-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+  gap: clamp(15px, 5vw, 48px);
+  align-items: start;
+}
+
+.category-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: clamp(10px, 2vw, 18px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.category-heading {
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  text-decoration: none;
+  text-transform: lowercase;
+  color: var(--text);
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.category-heading:hover {
+  border-bottom-color: var(--text);
+}
+
+.category-heading:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 4px;
+}
+
+.bottom-spotlight {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.bottom-spotlight-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 1px solid var(--thumb-border);
+  background: var(--nav-box-bg);
+}
+
+/* —— Subpages (watched / played / …) —— */
+.page-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  text-transform: lowercase;
+  margin: 0 0 clamp(12px, 3vw, 20px);
+}
+
+.subpage-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  margin: 0 0 clamp(8px, 2vw, 12px);
+}
+
+.subpage-nav a {
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+  text-decoration: none;
+  color: var(--text-muted);
+  text-transform: lowercase;
+  transition: color 0.15s ease;
+}
+
+.subpage-nav a:hover {
+  color: var(--text);
+}
+
+.subpage-nav a[aria-current="page"] {
+  color: var(--text);
+  font-weight: 600;
+  pointer-events: none;
+}
+
+.subpage-lead {
+  font-family: var(--mono);
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+  margin: 0;
+}
+
+.subpage-lead a {
+  color: var(--text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.watched-chooser {
+  min-height: 46vh;
+  display: grid;
+  place-items: center;
+  gap: 22px;
+  align-content: center;
+}
+
+.watched-choice {
+  font-size: clamp(2rem, 6vw, 4.25rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  text-decoration: none;
+  text-transform: lowercase;
+  color: var(--text-muted);
+  border-bottom: 3px solid transparent;
+  padding-bottom: 4px;
+  transition: color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.watched-choice:hover {
+  color: var(--text);
+  border-bottom-color: var(--text);
+  transform: translateY(-2px);
+}
+
+.watched-choice:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 6px;
+}
+
+/* —— Footer —— */
+.site-footer {
+  margin-top: 0;
+  background: var(--footer-bg);
+  color: var(--footer-text);
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  padding: 20px clamp(20px, 4vw, 40px);
+  line-height: 1.8;
+  text-transform: lowercase;
+}
+
+.site-footer .inner {
+  max-width: 980px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 28px;
+}
+
+.site-footer a {
+  color: var(--footer-text);
+  text-decoration: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--footer-text) 45%, transparent);
+}
+
+.site-footer a:hover {
+  border-bottom-color: var(--footer-text);
+}
+
+.footer-social {
+  display: inline-flex;
+  gap: 16px;
+  margin-left: auto;
+}
+
+.footer-social a {
+  font-weight: 500;
+  border-bottom: none;
+  opacity: 0.9;
+}
+
+.footer-social a:hover {
+  opacity: 1;
+}
+
+@media (max-width: 720px) {
+  .intro-block {
+    grid-template-columns: 1fr;
+  }
+
+  .name-brand {
+    font-size: clamp(1.75rem, 8vw, 2.5rem);
+    max-width: 100%;
+  }
+
+  .intro-columns {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-social {
+    margin-left: 0;
+  }
+
+  .categories-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* —— Back button —— */
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 16px;
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  text-decoration: none;
+  text-transform: lowercase;
+  color: var(--text-muted);
+  background: transparent;
+  border: 1px solid var(--nav-box-border);
+  border-radius: 2px;
+  margin-bottom: clamp(20px, 3vw, 28px);
+  transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+}
+
+.back-btn::before {
+  content: "←";
+}
+
+.back-btn:hover {
+  color: var(--text);
+  border-color: color-mix(in srgb, var(--text) 30%, var(--nav-box-border));
+  background: var(--nav-box-bg);
+}
+
+/* —— Snap scroll feed —— */
+.watched-feed {
+  animation: none !important;
+  opacity: 1 !important;
+  border-top: 2px dotted color-mix(in srgb, var(--text) 28%, transparent);
+  border-bottom: 2px dotted color-mix(in srgb, var(--text) 28%, transparent);
+}
+
+/* First review-entry border handled by container now */
+.watched-feed .review-entry {
+  border-top: none;
+  border-bottom: none;
+  padding: clamp(16px, 2.5vw, 28px) 0;
+  box-sizing: border-box;
+}
